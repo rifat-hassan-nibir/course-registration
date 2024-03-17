@@ -1,14 +1,12 @@
+/* eslint-disable react/prop-types */
 import Course from "./Course";
 
-const Courses = () => {
+const Courses = ({ courses }) => {
   return (
     <div className="grid gap-[24px] lg:grid-cols-3">
-      <Course></Course>
-      <Course></Course>
-      <Course></Course>
-      <Course></Course>
-      <Course></Course>
-      <Course></Course>
+      {courses.map((course, idx) => (
+        <Course course={course} key={idx}></Course>
+      ))}
     </div>
   );
 };

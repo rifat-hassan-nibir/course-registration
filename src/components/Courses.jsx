@@ -2,7 +2,7 @@ import Course from "./Course";
 
 const Courses = () => {
   return (
-    <div className="grid grid-cols-3 gap-[24px]">
+    <div className="grid gap-[24px] lg:grid-cols-3">
       <Course></Course>
       <Course></Course>
       <Course></Course>

@@ -1,16 +1,23 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { LuDollarSign } from "react-icons/lu";
 import { GoBook } from "react-icons/go";
+import { useState } from "react";
 
-const Course = ({ course }) => {
+const Course = ({ course, handleSelectedCourse }) => {
   const { photo, name, description, price, credit } = course;
+  const [isClicked, setIsClicked] = useState(false);
   return (
     <div>
       <div className="flex flex-col justify-between rounded-xl bg-white p-[16px]">
         <div>
-          <img src={photo} className="mb-[16px]" alt="" />
+          <img
+            src={photo ? photo : "Rectangle-2.png"}
+            className="mb-[16px]"
+            alt=""
+          />
           <h3 className="mb-[12px] text-[18px] font-semibold text-[#1C1B1B]">
-            {name}
+            {name || "Unknown"}
           </h3>
           <p className="mb-[16px] text-[14px] font-normal text-[#1c1b1b99]">
             {description}
@@ -30,8 +37,14 @@ const Course = ({ course }) => {
             </div>
           </div>
         </div>
-        <button className="rounded-lg bg-[#2F80ED] py-[9px] text-[18px] font-semibold text-white">
-          Select
+        <button
+          onClick={() => {
+            handleSelectedCourse(course);
+            setIsClicked(!isClicked);
+          }}
+          className={`rounded-lg ${isClicked ? "bg-red-500" : "bg-[#2F80ED]"}  py-[9px] text-[18px] font-semibold text-white`}
+        >
+          {isClicked ? "Remove" : "Select"}
         </button>
       </div>
     </div>
